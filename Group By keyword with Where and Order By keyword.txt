@@ -1,0 +1,50 @@
+Lab Task -3 
+
+1) select SYSDATE "Date"
+from dual;
+
+2) select empno, ename, salary, (salary*1.15) "New Salary"
+from emp;
+
+3) select (salary*1.15) "New salary", salary "Old Salary",((salary*1.15)-salary) "Increased Salary"
+from emp;
+
+4) select ename, To_char(next_day(add_months(hiredate,6), 'MONDAY'), 'Day,  "The" Ddspth "Of" Month , YYYY') "Salary Date"
+FROM EMP;
+
+5) select ename, sysdate, hiredate, Round(sysdate-hiredate)/30  "Months Worked"
+from emp
+Order by (sysdate-hiredate);
+
+6) select ename, salary "Earning" ,(salary*3) "Dream Salary"  
+from emp;
+
+7) select ename, INITCAP(ename) "EMPLOYEES" , length(ename)
+from emp
+where ename like 'J%'
+or  ename like 'A%'
+or  ename like 'M%';
+
+8) select ename, comm, NVL(to_char(comm),'No Commission') "Commission"
+from emp;
+
+Lab Task - 4
+1) select round(avg(salary),2) "Average Salary", max(salary) "Maximum Salary",min(salary) "Minimum Salary"
+from emp;
+
+2) select deptno, avg(salary),max(salary),min(salary)
+from emp
+group by deptno;
+
+3)! select job, avg(salary),max(salary),min(salary)
+from emp
+group by job;
+
+4) select job, ename, min(salary)
+from emp
+where job='MANAGER' and ename ='CLARK'
+group by ename, job;
+
+6) select job, max(sum(salary))
+from emp
+group by job;
