@@ -1,0 +1,36 @@
+Select *
+from emp;
+
+1. select ename, salary
+from emp
+where salary > 2850;
+
+2.  select ename, deptno, empno
+from emp
+where empno = 7566;
+
+3.  select ename, job, hiredate
+from emp
+where hiredate between '20-FEB-1981' and '1-MAY-1981';
+
+4.  select ename, deptno
+from emp
+where deptno between 10 and 30
+Order by ename;
+
+5.  select ename, salary, deptno
+from emp
+where salary >1500 and deptno IN(10,30);
+
+6.  select ename, hiredate
+from emp
+where hiredate between '1-JAN-1982' and '31-DEC-1982';
+
+7.  select ename, job, reporting_boss mgr
+from emp
+where reporting_boss IS NULL;
+
+8.  select ename, salary, comm
+from emp
+where comm>0
+Order By salary desc, comm DESC ;
