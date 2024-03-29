@@ -1,0 +1,25 @@
+1. create table department(dept_id number(3) constraint pks primary key, dept_name varchar(6) , budget number(6) default(0), constraint cks check(dept_name IN('CSE', 'EEE', 'BBA', 'Eng','Arch')));
+
+2. create table course (crs_id number(4) constraint pmk primary key, crs_name varchar2(20) not null,dept_id number(3), constraint mlw foreign key (dept_id) references department(dept_id));
+
+3. create table student(s_id number , s_name varchar2(20) , phone_number number, adresss varchar2(50), email varchar2(30), credit_completed number(3), course_completed number(2), cgpa float, deptno number(5), gender varchar2(6));
+
+4. alter table student add constraint adf primary key (s_id);
+
+5. alter table student modify s_name  not null ;
+
+6. alter table student add constraint weq  unique(email);
+
+7. alter table student add constraint acb foreign key(deptno) references department(dept_id); 
+
+8. alter table student add constraint sdf check(gender IN('M','F'));
+
+9. alter table student disable constraint adf;
+
+10. alter table student drop constraint sdf;
+
+11. select constraint_name, column_name from user_cons_columns where table_name = 'STUDENT';
+
+12. alter table student enable constraint adf;
+
+drop table student;
