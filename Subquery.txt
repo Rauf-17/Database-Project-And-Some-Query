@@ -1,0 +1,77 @@
+1) select *
+from emp
+where sal> ALL(select sal
+from emp 
+where job= 'MANAGER');
+
+2) select *
+from emp
+where sal> ANY(select sal from emp 
+where job= 'MANAGER') and job <> 'MANAGER'; 
+
+3) select empno, job, sal
+from emp
+where sal>ALL(select sal from emp 
+where job ='MANAGER') and job ='ANALYST';
+
+4) select *
+from emp
+where deptno =(select deptno from dept 
+where loc ='DALLAS');
+
+5) select dname, loc
+from dept
+where deptno = any(select deptno from emp 
+where mgr = (select empno from emp 
+where ename ='CLARK')); 
+
+6) select dname, loc, deptno
+from dept
+where deptno in(select deptno from emp 
+where job = 'MANAGER');
+
+7) select sal
+from emp
+where sal = (select max(sal) from emp);
+
+8) select sal
+from emp
+where sal = (select max(sal) from emp
+where sal < (select max(sal) from emp));
+
+9) select sal
+from emp
+where sal = (select max(sal) from emp
+where sal < (select max(sal) from emp
+where sal < (select max(sal) from emp)));
+
+10) select *
+from emp
+where job in('MANAGER','CLERK') and deptno in(select deptno from dept 
+where dname in('ACCOUNTS','MARKETING'));
+
+11) select *
+from emp
+where job IN('SALESMAN') and deptno IN(select deptno from dept 
+where loc NOT IN('DALLAS'));
+
+12) select ename 
+from emp
+where deptno =(select deptno from emp 
+where ename like 'SCOTT') and ename <>'SCOTT';
+
+
+13) select ename,sal
+from emp
+where sal = (select sal from emp 
+where ename like 'SMITH') and ename <> 'SMITH';
+
+14) select ename,comm
+from emp
+where job = ALL(select dname from dept 
+where dname='MARKETING' AND comm is not null);
+
+15) select ename,sal
+from emp
+where sal> ALL(select AVG(sal)
+from emp);
